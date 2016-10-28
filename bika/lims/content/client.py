@@ -12,6 +12,8 @@ from Products.Archetypes.utils import DisplayList
 from Products.CMFCore import permissions
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import safe_unicode
+from plone.indexer import indexer
+
 from bika.lims import PMF, bikaMessageFactory as _
 from bika.lims import interfaces
 from bika.lims.config import *
@@ -24,6 +26,19 @@ from zope.interface.declarations import alsoProvides
 import json
 import sys
 from bika.lims.workflow import getCurrentState, StateFlow, InactiveState
+
+@indexer(IClient)
+def State(instance):
+    address = instance.getPhysicalAddress()
+    if address:
+        return address['state']
+
+@indexer(IClient)
+def District(instance):
+    address = instance.getPhysicalAddress()
+    if address:
+        return address['district']
+
 
 schema = Organisation.schema.copy() + atapi.Schema((
     atapi.StringField('ClientID',
