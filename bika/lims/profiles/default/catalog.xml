@@ -17,4 +17,6 @@
  <index name="SamplingRoundUID" meta_type="FieldIndex"> <indexed_attr value="SamplingRoundUID"/> </index>
  <column value="SamplingRoundUID"/>
  <column value="review_state"/>
+ <column value="State"/>
+ <column value="District"/>
 </object>
