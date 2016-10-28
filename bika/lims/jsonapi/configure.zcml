@@ -46,4 +46,10 @@
     provides="plone.jsonapi.core.interfaces.IRouteProvider"
     factory=".calculate_partitions.calculate_partitions" />
 
+
+  <utility
+      name="bika.lims.jsonapi.get_index_values"
+      provides="plone.jsonapi.core.interfaces.IRouteProvider"
+      factory=".get_index_values.get_index_values" />
+
 </configure>
